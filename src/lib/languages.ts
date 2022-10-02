@@ -7,10 +7,10 @@ export const TRAITS = {
   typeAnnotation: ['none', 'int x', 'x: int', 'x int', 'x As Integer', 'x::Int'],
   variableDeclaration: ['x = 1', 'int x = 1', 'x: int = 1', 'val x = 1', 'var x = 1', 'const x = 1', 'let x = 1', 'x := 1', 'x <- 1', '$x = 1', 'my $x = 1', 'Dim x As Integer = 1'],
   functionDefinition: ['def', 'fn', 'fun', 'func', 'function', 'void/int/float/...', 'sub', 'Sub', 'proc', 'macro'],
-  functionBody: ['{...}', ':\\n\\t...', '=\\n\\t...', '...end', '...End Sub'],
+  functionBody: ['{...}', ':\\n\\t...', '=\\n\\t...', '...end', '...End Sub', 'do...end'],
   functionReturn: ['return x', 'return(x)', 'x', 'ret x', '<-x'],
   objectMember: ['x.y', 'x["y"]', 'x->y', 'x$y'],
-  printLine: ['print(x)', 'print x', 'console.log(x)', 'echo(x)', 'echo x', 'x', 'puts x', 'System.out.println(x)', 'Console.WriteLine(x)', 'cout << x << endl', 'printf("%s\\n", x)', 'fmt.Println(x)', 'println(x)', 'println!(x)', 'Debug.Print(x)', 'disp(x)', 'fprintf(\'%s\\n\',x)'],
+  printLine: ['print(x)', 'print x', 'console.log(x)', 'echo(x)', 'echo x', 'x', 'puts x', 'System.out.println(x)', 'Console.WriteLine(x)', 'cout << x << endl', 'printf("%s\\n", x)', 'fmt.Println(x)', 'println(x)', 'println!(x)', 'Debug.Print(x)', 'disp(x)', 'fprintf(\'%s\\n\',x)', 'IO.puts(x)'],
 } as const
 
 export type Trait = {
@@ -282,6 +282,18 @@ export const languages: Record<string, Trait> = {
     'objectMember': ['x.y'],
     'printLine': ['echo x'],
   },
+  'Elixir': {
+    'lineComment': ['#'],
+    'blockComment': ['none'],
+    'lineSeparator': [';'],
+    'typeAnnotation': ['none'],
+    'variableDeclaration': ['x = 1'],
+    'functionDefinition': ['def'],
+    'functionBody': ['do...end'],
+    'functionReturn': ['x'],
+    'objectMember': ['x.y'],
+    'printLine': ['IO.puts(x)'],
+  }
 }
 
 export type Lang = keyof typeof languages
