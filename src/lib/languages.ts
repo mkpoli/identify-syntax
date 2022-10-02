@@ -2,15 +2,15 @@
 
 export const TRAITS = {
   lineComment: ['//', '#', '%', "'", '--'],
-  blockComment: ['none', '/*...*/', '"""..."""', '--[[...]]', '=begin...=end'],
+  blockComment: ['none', '/*...*/', '"""..."""', '--[[...]]', '#[...]#', '=begin...=end'],
   lineSeparator: [';', '\\n'],
-  typeAnnotation: ['none', 'int x', 'x: int', 'x int', 'x As Integer'],
+  typeAnnotation: ['none', 'int x', 'x: int', 'x int', 'x As Integer', 'x::Int'],
   variableDeclaration: ['x = 1', 'int x = 1', 'x: int = 1', 'val x = 1', 'var x = 1', 'const x = 1', 'let x = 1', 'x := 1', 'x <- 1', '$x = 1', 'my $x = 1', 'Dim x As Integer = 1'],
-  functionDefinition: ['def', 'fn', 'fun', 'func', 'function', 'void/int/float/...', 'sub', 'Sub'],
-  functionBody: ['{...}', ':\\n\\t...', '...end', '...End Sub'],
+  functionDefinition: ['def', 'fn', 'fun', 'func', 'function', 'void/int/float/...', 'sub', 'Sub', 'proc', 'macro'],
+  functionBody: ['{...}', ':\\n\\t...', '=\\n\\t...', '...end', '...End Sub'],
   functionReturn: ['return x', 'return(x)', 'x', 'ret x', '<-x'],
   objectMember: ['x.y', 'x["y"]', 'x->y', 'x$y'],
-  printLine: ['print(x)', 'console.log(x)', 'echo(x)', 'x', 'puts x', 'print x', 'System.out.println(x)', 'Console.WriteLine(x)', 'cout << x << endl', 'printf("%s\\n", x)', 'fmt.Println(x)', 'println(x)', 'println!(x)', 'Debug.Print(x)', 'disp(x)', 'fprintf(\'%s\\n\',x)'],
+  printLine: ['print(x)', 'print x', 'console.log(x)', 'echo(x)', 'echo x', 'x', 'puts x', 'System.out.println(x)', 'Console.WriteLine(x)', 'cout << x << endl', 'printf("%s\\n", x)', 'fmt.Println(x)', 'println(x)', 'println!(x)', 'Debug.Print(x)', 'disp(x)', 'fprintf(\'%s\\n\',x)'],
 } as const
 
 export type Trait = {
@@ -257,6 +257,30 @@ export const languages: Record<string, Trait> = {
     'functionReturn': ['return x'],
     'objectMember': ['x.y'],
     'printLine': ['disp(x)', 'fprintf(\'%s\\n\',x)'],
+  },
+  'Julia': {
+    'lineComment': ['#'],
+    'blockComment': ['none'],
+    'lineSeparator': [';'],
+    'typeAnnotation': ['x::Int'],
+    'variableDeclaration': ['x = 1'],
+    'functionDefinition': ['function'],
+    'functionBody': ['...end'],
+    'functionReturn': ['return x'],
+    'objectMember': ['x.y'],
+    'printLine': ['println(x)'],
+  },
+  'Nim': {
+    'lineComment': ['#'],
+    'blockComment': ['#[...]#'],
+    'lineSeparator': [';'],
+    'typeAnnotation': ['x: int'],
+    'variableDeclaration': ['let x = 1', 'var x = 1', 'const x = 1'],
+    'functionDefinition': ['proc', 'func', 'macro'],
+    'functionBody': ['=\\n\\t...'],
+    'functionReturn': ['return x'],
+    'objectMember': ['x.y'],
+    'printLine': ['echo x'],
   },
 }
 
