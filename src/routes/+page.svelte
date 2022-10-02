@@ -7,7 +7,7 @@
   let filtered: Lang[]
   $: filtered = [...Object.entries(languages)].filter(([name, traits]) => {
     return Object.entries(conditions).every(([trait, values]) => {
-      return values.length === 0 || traits[trait].every((value) => values.includes(value));
+      return values.length === 0 || traits[trait].some((value) => values.includes(value));
     })
   }).map(([name,]) => name)
   $: console.log(conditions);
