@@ -293,7 +293,19 @@ export const languages: Record<string, Trait> = {
     'functionReturn': ['x'],
     'objectMember': ['x.y'],
     'printLine': ['IO.puts(x)'],
-  }
+  },
+  'Scala': {
+    'lineComment': ['//'],
+    'blockComment': ['/*...*/'],
+    'lineSeparator': ['\\n'],
+    'typeAnnotation': ['x: int'],
+    'variableDeclaration': ['val x = 1', 'var x = 1'],
+    'functionDefinition': ['def'],
+    'functionBody': ['{...}'],
+    'functionReturn': ['return x', 'x'],
+    'objectMember': ['x.y'],
+    'printLine': ['println(x)'],
+  },
 }
 
 export type Lang = keyof typeof languages
